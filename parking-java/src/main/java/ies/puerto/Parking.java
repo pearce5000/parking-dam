@@ -12,10 +12,72 @@ public class Parking {
         float importeTotalCalculado = 0f;
         System.out.print("Introduzca el nombre de usuario: ");
         String nombre = teclado.nextLine();
+        menu();
 
 
 
         teclado.close();
+    }
+
+    /**
+     *
+     */
+    static void menu() {
+        Scanner teclado = new Scanner(System.in);
+        int opcion = 0;
+        while (true) {
+            System.out.println("============");
+            System.out.println("PARKING DAM");
+            System.out.println("============");
+            System.out.println("1. Registrar vehículos");
+            System.out.println("2. Calcular tarifa de estacionamientos");
+            System.out.println("3. Mostrar resumen del día");
+            System.out.println("4. Salir");
+            do {
+                switch (opcion = teclado.nextInt()) {
+                    case 1:
+                        registrarVehiculos();
+                    case 2:
+
+                    case 3:
+
+                    default:
+                        System.out.println("Opción no válida");
+                }
+            } while (opcion != 4);
+        return;
+
+        }
+    }
+
+    /**
+     *
+     * @param
+     */
+    static void registrarVehiculos() {
+        Scanner teclado = new Scanner(System.in);
+        int cantidad = 0;
+        int totalVehiculos = 0;
+        String matricula;
+        int horasEstimadas = 0;
+        do {
+        System.out.println("¿Cuántos vehículos quieres registrar?");
+        cantidad = teclado.nextInt();
+        if (cantidad <= 0) {
+            System.out.println("Debe ser un entero positivo");
+        }
+        } while (cantidad <= 0);
+
+        for (int i = 1; i <= cantidad; i++) {
+            System.out.println("Vehiculo "+i);
+            System.out.println("Introduzca la matrícula");
+            matricula = teclado.nextLine();
+            System.out.println("Introduzca las horas estimadas");
+            horasEstimadas = teclado.nextInt();
+
+
+
+        }
     }
 
 }
