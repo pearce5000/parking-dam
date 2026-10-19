@@ -24,7 +24,7 @@ public class Parking {
     }
 
     /**
-     * Funcion que muestra el menu
+     * Funcion que muestra el menu y selecciona la funcion deseada.
      */
     static void menu() {
         int opcion = 0;
@@ -48,13 +48,17 @@ public class Parking {
                         System.out.println("Opción no válida");
                 }
             } while (opcion != 4);
+            System.out.println("Gracias por usar PARKING DAM");
+            teclado.close();
             return;
         }
     }
 
     /**
-     * Funcion que registra la cantidad de vehiculos y las horas estimadas que han hecho uso del parking
-     * @param
+     * Funcion que registra la cantidad de vehiculos y las horas estimadas que han hecho uso del parking.
+     * @param cantidad int que guarda la cantidad de vehiculos que se van a registrar.
+     * @param horasEstimadas int que registra las horas de uso del parking.
+     * @param matricula String que registra la matricula de los vehículos.
      */
     static void registrarVehiculos() {
         int cantidad = 0;
@@ -71,7 +75,8 @@ public class Parking {
         for (int i = 1; i <= cantidad; i++) {
             System.out.println("Vehiculo "+i);
             System.out.println("Introduzca la matrícula");
-            matricula = teclado.nextLine();
+            matricula = teclado.next();
+
             do {
                 System.out.println("Introduzca las horas estimadas");
                 horasEstimadas = teclado.nextInt();
@@ -87,12 +92,11 @@ public class Parking {
     }
 
     /**
-     * Funcion que calcula la tarifa
+     * Funcion que calcula la tarifa.
+     * @param horasEstimadas int que registra las horas estimadas del parking de cada vehiculo.
      */
     static void calcularTarifa() {
         int horasEstimadas = 0;
-        int calculosTarifa = 0;
-        float importeTotalCalculado = 0;
 
         do {
             System.out.println("Horas para calcular la tarifa");
@@ -102,14 +106,14 @@ public class Parking {
             }
         } while (horasEstimadas <= 0);
         float importe = horasEstimadas * tarifaHora;
-        calculosTarifa++;
+        totalCalculosTarifa++;
         importeTotalCalculado += importe;
         System.out.println("Importe: "+importe+" euros");
         menu();
     }
 
     /**
-     *
+     *Funcion que muestra el resumen de las operaciones realizadas.
      */
     static void mostrarResumen() {
         System.out.println("Usuario: "+nombre);
