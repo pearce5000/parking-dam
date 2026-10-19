@@ -59,6 +59,7 @@ public class Parking {
         int totalVehiculos = 0;
         String matricula;
         int horasEstimadas = 0;
+        int totalHorasRegistradas = 0;
         do {
         System.out.println("¿Cuántos vehículos quieres registrar?");
         cantidad = teclado.nextInt();
@@ -71,12 +72,18 @@ public class Parking {
             System.out.println("Vehiculo "+i);
             System.out.println("Introduzca la matrícula");
             matricula = teclado.nextLine();
-            System.out.println("Introduzca las horas estimadas");
-            horasEstimadas = teclado.nextInt();
-
-
-
+            do {
+                System.out.println("Introduzca las horas estimadas");
+                horasEstimadas = teclado.nextInt();
+                if (horasEstimadas <= 0) {
+                    System.out.println("Las horas deben ser mayores que 0");
+                }
+            } while (horasEstimadas <= 0);
+            totalVehiculos++;
+            totalHorasRegistradas += horasEstimadas;
         }
+        System.out.println("Vehiculos registrados en esta operacion: "+cantidad);
+        menu();
     }
 
     /**
@@ -100,12 +107,18 @@ public class Parking {
         calculosTarifa++;
         importeTotal += importe;
         System.out.println("Importe: "+importe+" euros");
+        menu();
     }
 
     /**
      *
      */
     static void mostrarResumen() {
-
+        System.out.println("Usuario: "+nombre);
+        System.out.println("Vehículos registrados: "+totalVehiculos);
+        System.out.println("Horas registradas: "+totalHorasRegistradas);
+        System.out.println("Cálculos de tarifas: "+CalculosTarifa);
+        System.out.println("Importe total calculado: "+importeTotal);
+        menu();
     }
 }
