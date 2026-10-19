@@ -20,7 +20,6 @@ public class Parking {
         System.out.print("Introduzca el nombre de usuario: ");
         nombre = teclado.nextLine();
         menu();
-        teclado.close();
     }
 
     /**
