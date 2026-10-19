@@ -38,15 +38,14 @@ public class Parking {
                     case 1:
                         registrarVehiculos();
                     case 2:
-
+                        calcularTarifa();
                     case 3:
-
+                        mostrarResumen();
                     default:
                         System.out.println("Opción no válida");
                 }
             } while (opcion != 4);
-        return;
-
+            return;
         }
     }
 
@@ -80,4 +79,33 @@ public class Parking {
         }
     }
 
+    /**
+     *
+     */
+    static void calcularTarifa() {
+        Scanner teclado = new Scanner(System.in);
+        int horasEstimadas = 0;
+        float tarifaHora = 1.50f;
+        int calculosTarifa = 0;
+        float importeTotal = 0;
+
+        do {
+            System.out.println("Horas para calcular la tarifa");
+            horasEstimadas = teclado.nextInt();
+            if (horasEstimadas <= 0) {
+                System.out.println("Las horas deben ser mayores que 0");
+            }
+        } while (horasEstimadas <= 0);
+        float importe = horasEstimadas * tarifaHora;
+        calculosTarifa++;
+        importeTotal += importe;
+        System.out.println("Importe: "+importe+" euros");
+    }
+
+    /**
+     *
+     */
+    static void mostrarResumen() {
+
+    }
 }
