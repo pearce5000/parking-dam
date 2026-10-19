@@ -2,28 +2,31 @@ package ies.puerto;
 
 import java.util.Scanner;
 
+/**
+ * @author Daniel Morales
+ * @version 1.0.0
+ */
 public class Parking {
+
+    static Scanner teclado = new Scanner(System.in);
+    static float tarifaHora = 1.50f;
+    static int totalVehiculos = 0;
+    static int totalHorasRegistradas = 0;
+    static int totalCalculosTarifa = 0;
+    static float importeTotalCalculado = 0f;
+    static String nombre;
+
     static void main() {
-        Scanner teclado = new Scanner(System.in);
-        float tarifaHora = 1.50f;
-        int totalVehiculos = 0;
-        int totalHorasRegitradas = 0;
-        int totalCalculosTarifa = 0;
-        float importeTotalCalculado = 0f;
         System.out.print("Introduzca el nombre de usuario: ");
-        String nombre = teclado.nextLine();
+        nombre = teclado.nextLine();
         menu();
-
-
-
         teclado.close();
     }
 
     /**
-     *
+     * Funcion que muestra el menu
      */
     static void menu() {
-        Scanner teclado = new Scanner(System.in);
         int opcion = 0;
         while (true) {
             System.out.println("============");
@@ -50,16 +53,13 @@ public class Parking {
     }
 
     /**
-     *
+     * Funcion que registra la cantidad de vehiculos y las horas estimadas que han hecho uso del parking
      * @param
      */
     static void registrarVehiculos() {
-        Scanner teclado = new Scanner(System.in);
         int cantidad = 0;
-        int totalVehiculos = 0;
         String matricula;
         int horasEstimadas = 0;
-        int totalHorasRegistradas = 0;
         do {
         System.out.println("¿Cuántos vehículos quieres registrar?");
         cantidad = teclado.nextInt();
@@ -87,14 +87,12 @@ public class Parking {
     }
 
     /**
-     *
+     * Funcion que calcula la tarifa
      */
     static void calcularTarifa() {
-        Scanner teclado = new Scanner(System.in);
         int horasEstimadas = 0;
-        float tarifaHora = 1.50f;
         int calculosTarifa = 0;
-        float importeTotal = 0;
+        float importeTotalCalculado = 0;
 
         do {
             System.out.println("Horas para calcular la tarifa");
@@ -105,7 +103,7 @@ public class Parking {
         } while (horasEstimadas <= 0);
         float importe = horasEstimadas * tarifaHora;
         calculosTarifa++;
-        importeTotal += importe;
+        importeTotalCalculado += importe;
         System.out.println("Importe: "+importe+" euros");
         menu();
     }
@@ -117,8 +115,8 @@ public class Parking {
         System.out.println("Usuario: "+nombre);
         System.out.println("Vehículos registrados: "+totalVehiculos);
         System.out.println("Horas registradas: "+totalHorasRegistradas);
-        System.out.println("Cálculos de tarifas: "+CalculosTarifa);
-        System.out.println("Importe total calculado: "+importeTotal);
+        System.out.println("Cálculos de tarifas: "+totalCalculosTarifa);
+        System.out.println("Importe total calculado: "+importeTotalCalculado);
         menu();
     }
 }
